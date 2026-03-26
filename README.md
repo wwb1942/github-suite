@@ -18,19 +18,7 @@ This repository is a fork of [`HeroAshacker/github-suite`](https://github.com/He
 
 See [NOTICE](NOTICE) for attribution and modification details.
 
-## What Changed
-
-This fork keeps the original Claude-oriented skill content and adds Codex-native variants.
-
-The repository is now organized into three layers:
-
-- `shared/` — runtime-neutral methodology and report structure
-- `claude/` — Claude Code compatible skill variants
-- `codex/` — Codex compatible skill variants
-
-For backward compatibility, the original top-level `github-finder/` and `github-analyzer/` folders are still present as Claude-style legacy entrypoints.
-
-## Skills
+## Variants
 
 | Runtime | Skill | Purpose |
 |---|---|---|
@@ -39,7 +27,7 @@ For backward compatibility, the original top-level `github-finder/` and `github-
 | Codex | `github-finder-codex` | Bounded GitHub discovery with primary-source validation |
 | Codex | `github-analyzer-codex` | File-grounded architecture and quality analysis |
 
-## Shared Methodology
+Shared documents:
 
 - [Finder Framework](shared/finder-framework.md)
 - [Analyzer Framework](shared/analyzer-framework.md)
@@ -77,44 +65,12 @@ ln -s ~/.codex/skill-repository/github-suite/codex/github-analyzer \
   ~/.codex/skills/github-analyzer-codex
 ```
 
-## Runtime Strategy
-
-### Claude Code variants
-
-- keep the original workflow-heavy style
-- retain Claude-oriented tool naming and orchestration assumptions
-- best for Claude Code environments already using SKILL chaining
-
-### Codex variants
-
-- use Codex-native wording and shell-first execution style
-- avoid Claude-specific tool names and chaining syntax
-- prefer bounded search loops and source-grounded analysis
-
-## Practical Guidance
+## Usage
 
 Use `github-finder` or `github-finder-codex` first when the task is repository discovery.
 
 Use `github-analyzer` or `github-analyzer-codex` after you already have a target repository and want to understand its architecture, module layout, and quality signals.
 
-## Status
-
-| Layer | Status |
-|---|---|
-| Shared methodology | Active |
-| Claude runtime compatibility | Active |
-| Codex runtime compatibility | Active |
-
 ## License
 
 [MIT](LICENSE)
-
-## Attribution
-
-- Original upstream repository: [`HeroAshacker/github-suite`](https://github.com/HeroAshacker/github-suite)
-- This fork adds:
-  - dual-runtime repository layout
-  - Codex-native SKILL variants
-  - shared methodology documents
-  - dual-platform installation documentation
-- No claim is made that the upstream authors endorse this fork or its modifications.
