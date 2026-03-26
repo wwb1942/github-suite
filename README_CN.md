@@ -30,30 +30,6 @@
 
 为了兼容旧用法，原来的顶层 `github-finder/` 和 `github-analyzer/` 目录仍然保留，作为 Claude 风格的旧入口。
 
-## 仓库结构
-
-```text
-github-suite/
-  README.md
-  README_CN.md
-  shared/
-    finder-framework.md
-    analyzer-framework.md
-    runtime-differences.md
-  claude/
-    github-finder/
-      SKILL.md
-    github-analyzer/
-      SKILL.md
-  codex/
-    github-finder/
-      SKILL.md
-    github-analyzer/
-      SKILL.md
-  github-finder/         # 旧版 Claude 兼容路径
-  github-analyzer/       # 旧版 Claude 兼容路径
-```
-
 ## 技能列表
 
 | 运行时 | 技能 | 用途 |

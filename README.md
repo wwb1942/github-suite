@@ -30,30 +30,6 @@ The repository is now organized into three layers:
 
 For backward compatibility, the original top-level `github-finder/` and `github-analyzer/` folders are still present as Claude-style legacy entrypoints.
 
-## Repository Layout
-
-```text
-github-suite/
-  README.md
-  README_CN.md
-  shared/
-    finder-framework.md
-    analyzer-framework.md
-    runtime-differences.md
-  claude/
-    github-finder/
-      SKILL.md
-    github-analyzer/
-      SKILL.md
-  codex/
-    github-finder/
-      SKILL.md
-    github-analyzer/
-      SKILL.md
-  github-finder/         # legacy Claude-compatible path
-  github-analyzer/       # legacy Claude-compatible path
-```
-
 ## Skills
 
 | Runtime | Skill | Purpose |
