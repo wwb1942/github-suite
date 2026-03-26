@@ -25,8 +25,8 @@ See [NOTICE](NOTICE) for attribution and modification details.
 |---|---|---|
 | Claude | `github-finder` | Discover repositories from ambiguous user requirements |
 | Claude | `github-analyzer` | Deep repository analysis and comparison |
-| Codex | `github-finder-codex` | Bounded GitHub discovery with primary-source validation |
-| Codex | `github-analyzer-codex` | File-grounded architecture and quality analysis |
+| Codex | `github-finder` | Bounded GitHub discovery with primary-source validation |
+| Codex | `github-analyzer` | File-grounded architecture and quality analysis |
 
 Shared documents:
 
@@ -61,16 +61,16 @@ git clone https://github.com/wwb1942/github-suite.git \
   ~/.codex/skill-repository/github-suite
 
 ln -s ~/.codex/skill-repository/github-suite/codex/github-finder \
-  ~/.codex/skills/github-finder-codex
+  ~/.codex/skills/github-finder
 ln -s ~/.codex/skill-repository/github-suite/codex/github-analyzer \
-  ~/.codex/skills/github-analyzer-codex
+  ~/.codex/skills/github-analyzer
 ```
 
 ## Usage
 
-Use `github-finder` or `github-finder-codex` first when the task is repository discovery.
+Use `github-finder` first when the task is repository discovery.
 
-Use `github-analyzer` or `github-analyzer-codex` after you already have a target repository and want to understand its architecture, module layout, and quality signals.
+Use `github-analyzer` after you already have a target repository and want to understand its architecture, module layout, and quality signals.
 
 ## License
 

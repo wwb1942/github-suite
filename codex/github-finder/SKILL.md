@@ -1,9 +1,9 @@
 ---
-name: github-finder-codex
+name: github-finder
 description: Codex-native GitHub project discovery workflow for technical evaluation, repository finding, and shortlisting.
 ---
 
-# github-finder-codex
+# github-finder
 
 Use this skill when the user wants to discover GitHub repositories for a technical requirement, compare open-source options, or shortlist candidate projects before deeper code analysis.
 
@@ -61,4 +61,4 @@ Then end with a recommendation order.
 
 ## Optional Handoff
 
-If the user wants deeper analysis of one repo, continue with `github-analyzer-codex`.
+If the user wants deeper analysis of one repo, continue with `github-analyzer`.

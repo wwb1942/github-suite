@@ -1,9 +1,9 @@
 ---
-name: github-analyzer-codex
+name: github-analyzer
 description: Codex-native repository analysis workflow for architecture reading, module mapping, and technical evaluation.
 ---
 
-# github-analyzer-codex
+# github-analyzer
 
 Use this skill when the user wants to understand a repository's architecture, evaluate code quality, compare multiple repos, or prepare for modification/forking.
 

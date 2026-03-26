@@ -25,8 +25,8 @@
 |---|---|---|
 | Claude | `github-finder` | 从模糊需求中发现候选 GitHub 项目 |
 | Claude | `github-analyzer` | 深度分析源码结构、架构与质量 |
-| Codex | `github-finder-codex` | 带预算约束的项目发现与主源验证 |
-| Codex | `github-analyzer-codex` | 基于文件证据的仓库分析与对比 |
+| Codex | `github-finder` | 带预算约束的项目发现与主源验证 |
+| Codex | `github-analyzer` | 基于文件证据的仓库分析与对比 |
 
 共享方法论文档：
 
@@ -61,16 +61,16 @@ git clone https://github.com/wwb1942/github-suite.git \
   ~/.codex/skill-repository/github-suite
 
 ln -s ~/.codex/skill-repository/github-suite/codex/github-finder \
-  ~/.codex/skills/github-finder-codex
+  ~/.codex/skills/github-finder
 ln -s ~/.codex/skill-repository/github-suite/codex/github-analyzer \
-  ~/.codex/skills/github-analyzer-codex
+  ~/.codex/skills/github-analyzer
 ```
 
 ## 使用建议
 
-当任务是“找项目/技术选型”时，先使用 `github-finder` 或 `github-finder-codex`。
+当任务是“找项目/技术选型”时，先使用 `github-finder`。
 
-当已经有目标仓库，想理解架构、模块、质量和可复用模式时，再使用 `github-analyzer` 或 `github-analyzer-codex`。
+当已经有目标仓库，想理解架构、模块、质量和可复用模式时，再使用 `github-analyzer`。
 
 ## 许可证
 
