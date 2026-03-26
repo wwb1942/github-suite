@@ -3,132 +3,121 @@
 
 # github-suite
 
-> GitHub 项目发现与源码深度分析工具套件，适用于 Claude Code SKILL 框架。
+> 同时兼容 Claude Code 与 Codex 的 GitHub 项目发现与仓库分析技能套件。
 
 [English](README.md)
 
-## 概览
+## 本次改造
 
-| SKILL | 版本 | 说明 |
-|-------|------|------|
-| `github-finder` | v2.0 | 多源多角度搜索，自适应评估，双语支持 |
-| `github-analyzer` | v1.0 | 6 维度源码深度分析，质量评估卡 |
+这个 fork 保留了原项目的 Claude 风格技能内容，并新增了 Codex 原生版本。
 
-## 工作流
+现在仓库分为三层：
 
+- `shared/`：运行时无关的方法论
+- `claude/`：Claude Code 兼容版本
+- `codex/`：Codex 兼容版本
+
+为了兼容旧用法，原来的顶层 `github-finder/` 和 `github-analyzer/` 目录仍然保留，作为 Claude 风格的旧入口。
+
+## 仓库结构
+
+```text
+github-suite/
+  README.md
+  README_CN.md
+  shared/
+    finder-framework.md
+    analyzer-framework.md
+    runtime-differences.md
+  claude/
+    github-finder/
+      SKILL.md
+    github-analyzer/
+      SKILL.md
+  codex/
+    github-finder/
+      SKILL.md
+    github-analyzer/
+      SKILL.md
+  github-finder/         # 旧版 Claude 兼容路径
+  github-analyzer/       # 旧版 Claude 兼容路径
 ```
-┌─────────────────┐      链式调用       ┌──────────────────┐
-│  github-finder   │ ──────────────────► │  github-analyzer  │
-│  （项目发现）     │   可选深度调研触发   │  （源码分析）      │
-│                  │                     │                   │
-│  • 术语预研      │                     │  • 3 种模式       │
-│  • 双语搜索      │                     │  • 6 维度分析     │
-│  • 多角度查询    │                     │  • 质量评估卡     │
-│  • 自适应星级 ★  │                     │  • 成果报告库     │
-└─────────────────┘                      └──────────────────┘
-        ▲                                         │
-        │              用户请求                     │
-        └──────────────────────────────────────────┘
-```
 
-## 核心能力
+## 技能列表
 
-### github-finder v2.0
+| 运行时 | 技能 | 用途 |
+|---|---|---|
+| Claude | `github-finder` | 从模糊需求中发现候选 GitHub 项目 |
+| Claude | `github-analyzer` | 深度分析源码结构、架构与质量 |
+| Codex | `github-finder-codex` | 带预算约束的项目发现与主源验证 |
+| Codex | `github-analyzer-codex` | 基于文件证据的仓库分析与对比 |
 
-| 能力 | 说明 |
-|------|------|
-| 术语预研 | 搜索前识别产品名、代号、缩写 |
-| 双语搜索 | 中文输入按 50/50 中英比例，英文输入按 30/70 比例并行查询 |
-| 多角度查询 | ≥3 个搜索角度：直接工具、生态插件、基础设施、社区、替代方案 |
-| 自适应星级 | 按生态年龄动态调整阈值（成熟 >1000、成长 >200、新兴 >50） |
-| 搜索扩展 | README 引用、GitHub Topics、竞品对比、引用图谱 |
-| 社区源 | Hacker News、Reddit、V2EX、知乎 |
-| 时间感知 | 查询附加年份，🆕 标注新项目，⚠️ 标注停滞项目 |
+## 共享方法论
 
-### github-analyzer v1.0
+- [Finder Framework](shared/finder-framework.md)
+- [Analyzer Framework](shared/analyzer-framework.md)
+- [Runtime Differences](shared/runtime-differences.md)
 
-| 能力 | 说明 |
-|------|------|
-| 3 种分析模式 | 深度调研、快速概览、对比分析 |
-| 6 维度框架 | 结构、架构、模块、模式、质量、创新 |
-| 质量评估卡 | 多维度评分可视化 |
-| 成果库 | 调研报告存储与引用 |
+## 安装方式
 
-## 使用方法
+### Claude Code
 
-### 项目发现
+使用 `claude/` 下的兼容版本：
 
 ```bash
-# 基础搜索
-/github-finder I need a Go CLI framework
-
-# 双语技术选型
-/github-finder 找一个替代 Notion 的开源笔记软件
-
-# 新兴生态自适应搜索
-/github-finder 基于 Gemini API 的开源项目
-
-# 复杂需求分类法
-/github-finder 我想把各种 AI API 统一管理起来
-```
-
-### 源码分析
-
-```bash
-# 深度调研
-/github-analyzer https://github.com/user/repo 深度调研
-
-# 快速概览
-/github-analyzer https://github.com/user/repo 快速概览
-
-# 对比分析
-/github-analyzer 对比 projectA vs projectB
-
-# 指定关注维度
-/github-analyzer https://github.com/user/repo 深度调研 关注架构设计和设计模式
-```
-
-### 链式调用
-
-```bash
-# 发现后深度分析
-/github-finder 找一个 AI 代码编辑器，找到后深度分析
-```
-
-## 环境要求
-
-- [Claude Code](https://claude.ai/code)，需支持 SKILL 框架
-- 可访问互联网（用于 GitHub 搜索和网页抓取）
-
-## 安装
-
-```bash
-# 克隆到 SKILL 仓库目录
 git clone https://github.com/HeroAshacker/github-suite.git \
   ~/.claude/skill-repository/github-suite
 
-# 激活 SKILL（创建符号链接）
-ln -s ~/.claude/skill-repository/github-suite/github-finder \
+ln -s ~/.claude/skill-repository/github-suite/claude/github-finder \
   ~/.claude/skills/github-finder
-ln -s ~/.claude/skill-repository/github-suite/github-analyzer \
+ln -s ~/.claude/skill-repository/github-suite/claude/github-analyzer \
   ~/.claude/skills/github-analyzer
-
-# 重启 Claude Code 会话以加载新 SKILL
 ```
 
-## 版本
+如果你还依赖旧路径，顶层原始目录依然保留。
 
-| SKILL | 版本 | 状态 |
-|-------|------|------|
-| github-finder | v2.0 | 稳定 |
-| github-analyzer | v1.0 | 稳定 |
+### Codex
+
+将 `codex/` 下的版本链接到 Codex skills 目录：
+
+```bash
+git clone https://github.com/HeroAshacker/github-suite.git \
+  ~/.codex/skill-repository/github-suite
+
+ln -s ~/.codex/skill-repository/github-suite/codex/github-finder \
+  ~/.codex/skills/github-finder-codex
+ln -s ~/.codex/skill-repository/github-suite/codex/github-analyzer \
+  ~/.codex/skills/github-analyzer-codex
+```
+
+## 运行时策略
+
+### Claude Code 版本
+
+- 保留原始的工作流导向风格
+- 保留 Claude 风格的工具命名和链式调用假设
+- 适合 Claude Code 的 SKILL 工作流
+
+### Codex 版本
+
+- 使用 Codex 原生表达方式
+- 避免 Claude 专属工具名和调用语法
+- 更强调 shell-first、主源验证、搜索预算控制
+
+## 使用建议
+
+当任务是“找项目/技术选型”时，先使用 `github-finder` 或 `github-finder-codex`。
+
+当已经有目标仓库，想理解架构、模块、质量和可复用模式时，再使用 `github-analyzer` 或 `github-analyzer-codex`。
+
+## 状态
+
+| 层 | 状态 |
+|---|---|
+| 共享方法论 | 可用 |
+| Claude 兼容层 | 可用 |
+| Codex 兼容层 | 可用 |
 
 ## 许可证
 
-[MIT](LICENSE) - 详见 LICENSE 文件。
-
-## 致谢
-
-完全使用 Anthropic 的 [Claude Code](https://claude.ai/code) 构建。
-
-由 Claude Opus 4.6 协作完成。
+[MIT](LICENSE)

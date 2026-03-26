@@ -3,132 +3,121 @@
 
 # github-suite
 
-> Claude Code SKILL suite for GitHub project discovery & source code analysis.
+> Dual-runtime GitHub discovery and repository analysis skill suite for Claude Code and Codex.
 
 [中文文档](README_CN.md)
 
-## Overview
+## What Changed
 
-| SKILL | Version | Description |
-|-------|---------|-------------|
-| `github-finder` | v2.0 | Multi-source bilingual search with adaptive thresholds |
-| `github-analyzer` | v1.0 | 6-dimension deep source code analysis |
+This fork keeps the original Claude-oriented skill content and adds Codex-native variants.
 
-## Workflow
+The repository is now organized into three layers:
 
-```
-┌─────────────────┐     chain call      ┌──────────────────┐
-│  github-finder   │ ──────────────────► │  github-analyzer  │
-│  (Discovery)     │   optional deep     │  (Analysis)       │
-│                  │   research trigger   │                   │
-│  • Term research │                     │  • 3 modes        │
-│  • Bilingual     │                     │  • 6 dimensions   │
-│  • Multi-angle   │                     │  • Quality card   │
-│  • Adaptive ★    │                     │  • Report library │
-└─────────────────┘                      └──────────────────┘
-        ▲                                         │
-        │            User Request                  │
-        └──────────────────────────────────────────┘
-```
+- `shared/` — runtime-neutral methodology and report structure
+- `claude/` — Claude Code compatible skill variants
+- `codex/` — Codex compatible skill variants
 
-## Features
+For backward compatibility, the original top-level `github-finder/` and `github-analyzer/` folders are still present as Claude-style legacy entrypoints.
 
-### github-finder v2.0
+## Repository Layout
 
-| Feature | Description |
-|---------|-------------|
-| Term Research | Pre-research brand names, codenames, abbreviations before searching |
-| Bilingual Search | 50/50 CN/EN for Chinese input, 30/70 for English input |
-| Multi-Angle Query | ≥3 angles: direct tool, ecosystem plugin, infra, community, alternative |
-| Adaptive Stars | Dynamic thresholds by ecosystem age (mature >1000, growing >200, emerging >50) |
-| Search Expansion | README references, GitHub Topics, competitor comparison, citation graph |
-| Community Sources | Hacker News, Reddit, V2EX, Zhihu |
-| Time Awareness | Current year in queries, 🆕 for new projects, ⚠️ for stale ones |
-
-### github-analyzer v1.0
-
-| Feature | Description |
-|---------|-------------|
-| 3 Analysis Modes | Deep Research, Quick Overview, Comparative |
-| 6-Dimension Framework | Structure, Architecture, Modules, Patterns, Quality, Innovation |
-| Quality Scorecard | Visual rating card with per-dimension scores |
-| Report Library | Save and retrieve analysis reports for future reference |
-
-## Usage
-
-### Project Discovery
-
-```bash
-# Basic search
-/github-finder I need a Go CLI framework
-
-# Tech selection with bilingual support
-/github-finder Find an open-source alternative to Notion
-
-# Emerging ecosystem with adaptive thresholds
-/github-finder Open-source projects built on Gemini API
-
-# Complex requirement with taxonomy
-/github-finder I want to unify multiple AI API providers
+```text
+github-suite/
+  README.md
+  README_CN.md
+  shared/
+    finder-framework.md
+    analyzer-framework.md
+    runtime-differences.md
+  claude/
+    github-finder/
+      SKILL.md
+    github-analyzer/
+      SKILL.md
+  codex/
+    github-finder/
+      SKILL.md
+    github-analyzer/
+      SKILL.md
+  github-finder/         # legacy Claude-compatible path
+  github-analyzer/       # legacy Claude-compatible path
 ```
 
-### Source Code Analysis
+## Skills
 
-```bash
-# Deep research
-/github-analyzer https://github.com/user/repo deep-research
+| Runtime | Skill | Purpose |
+|---|---|---|
+| Claude | `github-finder` | Discover repositories from ambiguous user requirements |
+| Claude | `github-analyzer` | Deep repository analysis and comparison |
+| Codex | `github-finder-codex` | Bounded GitHub discovery with primary-source validation |
+| Codex | `github-analyzer-codex` | File-grounded architecture and quality analysis |
 
-# Quick overview
-/github-analyzer https://github.com/user/repo quick-overview
+## Shared Methodology
 
-# Comparative analysis
-/github-analyzer compare projectA vs projectB
-
-# Focused dimensions
-/github-analyzer https://github.com/user/repo deep-research focus on architecture and design patterns
-```
-
-### Chained Workflow
-
-```bash
-# Discover then analyze
-/github-finder Find an AI code editor, then deep-analyze the best match
-```
-
-## Requirements
-
-- [Claude Code](https://claude.ai/code) with SKILL framework support
-- Internet access for GitHub search and web fetching
+- [Finder Framework](shared/finder-framework.md)
+- [Analyzer Framework](shared/analyzer-framework.md)
+- [Runtime Differences](shared/runtime-differences.md)
 
 ## Installation
 
+### Claude Code
+
+Use the Claude-compatible copies under `claude/`.
+
 ```bash
-# Clone to your SKILL repository
 git clone https://github.com/HeroAshacker/github-suite.git \
   ~/.claude/skill-repository/github-suite
 
-# Activate SKILLs (create symlinks)
-ln -s ~/.claude/skill-repository/github-suite/github-finder \
+ln -s ~/.claude/skill-repository/github-suite/claude/github-finder \
   ~/.claude/skills/github-finder
-ln -s ~/.claude/skill-repository/github-suite/github-analyzer \
+ln -s ~/.claude/skill-repository/github-suite/claude/github-analyzer \
   ~/.claude/skills/github-analyzer
-
-# Restart Claude Code session to load new SKILLs
 ```
 
-## Version
+If you rely on the old layout, the original top-level folders are still available.
 
-| SKILL | Version | Status |
-|-------|---------|--------|
-| github-finder | v2.0 | Stable |
-| github-analyzer | v1.0 | Stable |
+### Codex
+
+Copy or symlink the Codex-native folders into your Codex skills directory.
+
+```bash
+git clone https://github.com/HeroAshacker/github-suite.git \
+  ~/.codex/skill-repository/github-suite
+
+ln -s ~/.codex/skill-repository/github-suite/codex/github-finder \
+  ~/.codex/skills/github-finder-codex
+ln -s ~/.codex/skill-repository/github-suite/codex/github-analyzer \
+  ~/.codex/skills/github-analyzer-codex
+```
+
+## Runtime Strategy
+
+### Claude Code variants
+
+- keep the original workflow-heavy style
+- retain Claude-oriented tool naming and orchestration assumptions
+- best for Claude Code environments already using SKILL chaining
+
+### Codex variants
+
+- use Codex-native wording and shell-first execution style
+- avoid Claude-specific tool names and chaining syntax
+- prefer bounded search loops and source-grounded analysis
+
+## Practical Guidance
+
+Use `github-finder` or `github-finder-codex` first when the task is repository discovery.
+
+Use `github-analyzer` or `github-analyzer-codex` after you already have a target repository and want to understand its architecture, module layout, and quality signals.
+
+## Status
+
+| Layer | Status |
+|---|---|
+| Shared methodology | Active |
+| Claude runtime compatibility | Active |
+| Codex runtime compatibility | Active |
 
 ## License
 
-[MIT](LICENSE) - see LICENSE file for details.
-
-## Credits
-
-Built entirely with [Claude Code](https://claude.ai/code) by Anthropic.
-
-Co-authored by Claude Opus 4.6.
+[MIT](LICENSE)
