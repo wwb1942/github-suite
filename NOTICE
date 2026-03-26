@@ -1,0 +1,37 @@
+Fork Attribution Notice
+
+This repository is derived from:
+
+  HeroAshacker/github-suite
+  https://github.com/HeroAshacker/github-suite
+
+Upstream license:
+
+  MIT License
+
+Scope of this fork:
+
+- Preserve the original Claude-oriented skill content
+- Add a dual-runtime layout for Claude Code and Codex
+- Add Codex-native skill variants
+- Add shared, runtime-neutral methodology documents
+- Update installation documentation for both runtimes
+
+What remains from upstream:
+
+- Original repository concept and skill intent
+- Original Claude-oriented skill content as the basis for the Claude compatibility layer
+- Original license
+
+What is newly added in this fork:
+
+- `claude/` compatibility layer layout
+- `codex/` Codex-native skill variants
+- `shared/` methodology documents
+- fork-specific documentation and compatibility notes
+
+Non-endorsement:
+
+This fork is an independent derivative work. It should not be described as an
+official upstream release or as endorsed by the original upstream authors unless
+such endorsement is explicitly granted.

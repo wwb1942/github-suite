@@ -7,6 +7,17 @@
 
 [中文文档](README_CN.md)
 
+## Fork Notice
+
+This repository is a fork of [`HeroAshacker/github-suite`](https://github.com/HeroAshacker/github-suite).
+
+- Upstream project: GitHub discovery and analysis SKILL suite for Claude Code
+- Upstream license: MIT
+- This fork keeps attribution to the upstream project and preserves the original license
+- This fork is an adaptation layer, not an official upstream release
+
+See [NOTICE](NOTICE) for attribution and modification details.
+
 ## What Changed
 
 This fork keeps the original Claude-oriented skill content and adds Codex-native variants.
@@ -65,7 +76,7 @@ github-suite/
 Use the Claude-compatible copies under `claude/`.
 
 ```bash
-git clone https://github.com/HeroAshacker/github-suite.git \
+git clone https://github.com/wwb1942/github-suite.git \
   ~/.claude/skill-repository/github-suite
 
 ln -s ~/.claude/skill-repository/github-suite/claude/github-finder \
@@ -81,7 +92,7 @@ If you rely on the old layout, the original top-level folders are still availabl
 Copy or symlink the Codex-native folders into your Codex skills directory.
 
 ```bash
-git clone https://github.com/HeroAshacker/github-suite.git \
+git clone https://github.com/wwb1942/github-suite.git \
   ~/.codex/skill-repository/github-suite
 
 ln -s ~/.codex/skill-repository/github-suite/codex/github-finder \
@@ -121,3 +132,13 @@ Use `github-analyzer` or `github-analyzer-codex` after you already have a target
 ## License
 
 [MIT](LICENSE)
+
+## Attribution
+
+- Original upstream repository: [`HeroAshacker/github-suite`](https://github.com/HeroAshacker/github-suite)
+- This fork adds:
+  - dual-runtime repository layout
+  - Codex-native SKILL variants
+  - shared methodology documents
+  - dual-platform installation documentation
+- No claim is made that the upstream authors endorse this fork or its modifications.
