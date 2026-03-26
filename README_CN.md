@@ -1,4 +1,4 @@
-![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-blueviolet)
+![Compatibility](https://img.shields.io/badge/Compatibility-Claude%20Code%20%2B%20Codex-4c8bf5)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 # github-suite
